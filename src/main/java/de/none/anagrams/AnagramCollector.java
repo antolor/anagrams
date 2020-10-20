@@ -2,14 +2,13 @@ package de.none.anagrams;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.LineIterator;
+import java.util.stream.Stream;
 
 /**
  * @author Umapragash Sornalingam
@@ -98,16 +97,15 @@ public class AnagramCollector {
 	 * */
 	private static List<String> readLines(File sample) {
 		List<String> words = new ArrayList<>();
-		// Using lineiterator from commons-io
-		try (LineIterator lineIter = FileUtils.lineIterator(sample)) {
-			while (lineIter.hasNext()) {
-				words.add(lineIter.nextLine());
-			}
-		} catch (IOException e) {
+		// read file into a stream
+		try(Stream<String> stream = Files.lines(sample.toPath())) {
+			// collect all non-empty line to a list
+			words.addAll(stream.filter(line -> line != null && !line.isEmpty()).collect(Collectors.toList()));
+		} catch(IOException e) {
 			// logging would be nicer
 			e.printStackTrace();
 		}
 		return words;
 	}
-
+	
 }
