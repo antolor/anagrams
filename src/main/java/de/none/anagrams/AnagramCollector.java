@@ -2,6 +2,7 @@ package de.none.anagrams;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,18 +21,23 @@ import java.util.stream.Stream;
  */
 public class AnagramCollector {
 	
-	private AnagramCollector() {
-		// default private constructor
+	private File sample;
+	
+	/**
+	 * {@link Constructor}
+	 * 
+	 * @param sample {@link File} txt-file with words 
+	 * */
+	public AnagramCollector(File sample) {
+		this.sample = sample;
 	}
 
 	/**
 	 * Starts the search and the collection for anagrams
 	 * 
-	 * @param sample {@link File} txt-file with words
-	 * 
-	 * @return Results as list of found anagrams
+	 * @return {@link List}
 	 */
-	public static List<String> collect(File sample) {
+	public List<String> collect() {
 		// read the file
 		List<String> words = readLines(sample);
 
@@ -52,27 +58,35 @@ public class AnagramCollector {
 	 * @param sortedWords Map:<br />
 	 *                    key {@link String}<br />
 	 *                    value {@link List} of {@link String}
-	 * @return reduced {@link List} of {@link String} as result
+	 * @return {@link List}
 	 */
-	private static List<String> buildResults(Map<String, List<String>> sortedWords) {
+	private List<String> buildResults(Map<String, List<String>> sortedWords) {
 		List<String> results = new ArrayList<>();
-
 		// go through every grouped anagrams
 		sortedWords.forEach((anagramGroupKey, anagramGroupList) -> {
-			// for collecting every value of each anagram-group
-			StringBuilder sb = new StringBuilder();
-			
-			// go through every anagram in group
-			anagramGroupList.forEach(anagram -> {
-				sb.append(anagram);
-				// for the space between words
-				sb.append(" ");
-			});
 			// add line to results
-			results.add(sb.toString());
+			results.add(appendAnagram(anagramGroupList));
 		});
 		// return the list of grouped anagrams
 		return results;
+	}
+
+	/**
+	 * Collecting every value of each anagram-group as one string
+	 * 
+	 * @param anagramGroupList {@link List} of {@link String}
+	 * 
+	 * @return {@link String}
+	 * */
+	private String appendAnagram(List<String> anagramGroupList) {
+		StringBuilder sb = new StringBuilder();
+		// go through every anagram in group
+		anagramGroupList.forEach(anagram -> {
+			// append anagram and spacer
+			sb.append(anagram + " ");
+		});
+		// return the results as a string
+		return sb.toString();
 	}
 
 	/**
@@ -80,11 +94,16 @@ public class AnagramCollector {
 	 * 
 	 * @param value {@link String} to sort
 	 * 
-	 * @return sorted {@link String}
+	 * @return {@link String}
 	 */
-	private static String sortChars(String value) {
+	private String sortChars(String value) {
+		// get string as char-array
 		char[] chars = value.toCharArray();
+		
+		// alphabetical sort
 		Arrays.sort(chars);
+		
+		// return sorted char-array as new string
 		return new String(chars);
 	}
 
@@ -93,9 +112,9 @@ public class AnagramCollector {
 	 * 
 	 * @param sample {@link File} to read
 	 * 
-	 * @return {@link List} of {@link String}s
+	 * @return {@link List} of {@link String}
 	 * */
-	private static List<String> readLines(File sample) {
+	private List<String> readLines(File sample) {
 		List<String> words = new ArrayList<>();
 		// read file into a stream
 		try(Stream<String> stream = Files.lines(sample.toPath())) {
