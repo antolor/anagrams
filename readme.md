@@ -40,7 +40,7 @@ Mein Lösungsweg umfasst z.B. das Umwandeln der einzelnen Strings in ein char-Ar
 Sortierung. Dieser Schritt könnte von verschiedenen Microservices übernommen werden,  
 um die Last einer 1 Mrd. Wörter großen Liste zu verteilen.  
   
-Die große Liste sollte in kleinere Workloads heruntergebrochen und den entsprechenden Services bereitgestellt werden (z.B.  
+Die große Liste sollte in kleinere Workloads heruntergebrochen und den entsprechenden Services bereitgestellt werden (z.B.
 über MQs). Sobald die Services durch sind, schicken sie eine entsprechende Mitteilung mit den Ergebnissen in eine MQ des Empfängers.  
 Sobald die gesamten "Workloads" verarbeitet wurden, arbeitet der Hauptprozess weiter.  
 
