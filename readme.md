@@ -19,11 +19,11 @@ Mit der Collectors#groupingBy l채sst sich relativ einfach realisieren. Anschlie�
 mussten die Ergebnisse nur zusammengef체hrt und f체r die Anzeige aufbereitet werden.  
 
 ## Bibliotheken
-Ich bin ein Fan von Bibliotheken, aber wo man sie weglassen kann, sollte man sie  
-auch weglassen.   
+Ich bin ein Fan von Bibliotheken, aber wo man sie weglassen kann,  
+sollte man sie auch weglassen.   
 
-Diese Aufgabe kann ohne Drittanbieter-Bibliotheken implementiert werden. Mit  
-Java 8 hat man s채mtliche Werkzeuge dazu in der JDK.  
+Diese Aufgabe kann ohne Drittanbieter-Bibliotheken implementiert werden.
+Mit Java 8 hat man s채mtliche Werkzeuge dazu in der JDK.  
 
 Die Vor- und Nachteile beim Einsatz von Bibliotheken m체ssen gut 체berdacht werden.  
 Konkret in diesem Beispiel habe ich keinerlei Vorteile f체r den Einsatz von   
