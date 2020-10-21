@@ -26,15 +26,15 @@ Diese Aufgabe kann ohne Drittanbieter-Bibliotheken implementiert werden. Mit
 Java 8 hat man sämtliche Werkzeuge dazu in der JDK.  
 
 Die Vor- und Nachteile beim Einsatz von Bibliotheken müssen gut überdacht werden.  
-Konkret in diesem Beispiel hab ich keinerlei Vorteile für den Einsatz von   
+Konkret in diesem Beispiel habe ich keinerlei Vorteile für den Einsatz von   
 externen Bibliotheken gesehen - sondern eher die Nachteile, die Abhängigkeit  
 zu Drittanbieter-Bibliotheken zu schaffen und diese in die Anwendung mit einzubeziehen  
-und somit ihre Dateigröße zu erhöhen, als auch während der Laufzeit mehr Resourcen laden zu müssen.
+und somit ihre Dateigröße zu erhöhen, als auch während der Laufzeit mehr Ressourcen laden zu müssen.
 
 ## Architektur und Skalierbarkeit
 Wenn wir von Skalierbarkeit reden, denke ich an erster Stelle an verteilte Systeme und verteilte Aufgaben.  
 Falls man tatsächlich mal mit 1 Mrd. Wörter zu tun haben sollte, würde ich auf Microservices setzen,  
-und die rechenintensive Aufgaben klar definieren und auslagern.  
+und die rechenintensiven Aufgaben klar definieren und auslagern.  
   
 Mein Lösungsweg umfasst z.B. das Umwandeln der einzelnen Strings in ein char-Array und deren alphabetische  
 Sortierung. Dieser Schritt könnte von verschiedenen Microservices übernommen werden,  
