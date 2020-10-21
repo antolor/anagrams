@@ -22,11 +22,11 @@ mussten die Ergebnisse nur zusammengeführt und für die Anzeige aufbereitet wer
 Ich bin ein Fan von Bibliotheken, aber wo man sie weglassen kann,  
 sollte man sie auch weglassen.   
 
-Diese Aufgabe kann ohne Drittanbieter-Bibliotheken implementiert werden.
+Diese Aufgabe kann ohne Drittanbieter-Bibliotheken implementiert werden.  
 Mit Java 8 hat man sämtliche Werkzeuge dazu in der JDK.  
 
 Die Vor- und Nachteile beim Einsatz von Bibliotheken müssen gut überdacht werden.  
-Konkret in diesem Beispiel habe ich keinerlei Vorteile für den Einsatz von   
+Konkret in diesem Beispiel habe ich keinerlei Vorteile für den Einsatz von  
 externen Bibliotheken gesehen - sondern eher die Nachteile, die Abhängigkeit  
 zu Drittanbieter-Bibliotheken zu schaffen und diese in die Anwendung mit einzubeziehen  
 und somit ihre Dateigröße zu erhöhen, als auch während der Laufzeit mehr Ressourcen laden zu müssen.
